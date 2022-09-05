@@ -11,4 +11,4 @@ Had to abandon the linear model idea and used XGBoost.
 
 The result:
 
-The result, to put it frankly, is quite… suboptimal. Was it my lack of experience, noisiness of the dataset or oversimplified features? I think all of them. Yet I guess the project is still good enough for you to assess my capabilities.  
+The result, to put it frankly, is quite… suboptimal. Was the reason my lack of experience, noisiness of the dataset or oversimplified features? I think all of them. Yet I guess the project is still good enough for you to assess my capabilities.  
