@@ -119,6 +119,8 @@ params_grid3 = dict(processor__normalization = [True, False], processor__types =
                    regression__n_estimators=[100,300,500])
 
 #%%
+'''The GridSearch part, better to skip it since I rewrote it many times and
+spent quite a while trying different settings'''
 figures = []
 for limit in range(30000, 60000, 10000):
     x = df.loc[:, df.columns !='price']
@@ -145,6 +147,7 @@ for limit in range(30000, 60000, 10000):
     ax.plot(y_pred, y_test, marker = 'o', ls='', ms = 3.0)
 
 #%%
+'''The final pipeline that I decided to go with'''
 x = df.loc[:, df.columns !='price']
 y = df.loc[:, df.columns =='price']
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.2, random_state=1, shuffle=True)
@@ -179,8 +182,8 @@ sns.histplot(perc_diff, ax = ax2, kde = True)
 first_q, second_q = np.quantile(perc_diff, (.25, .75))
 
 #%%
-OoI = [[1, 44, 16, 20, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]]
-OoI = pd.DataFrame(OoI, columns=x_train.columns)
+Object_of_Interest = [[1, 44, 16, 20, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]]
+OoI = pd.DataFrame(Object_of_Interest, columns=x_train.columns)
 
 #%%
 final_result = 10**pipe.predict(OoI)[0]
