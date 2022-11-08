@@ -5,7 +5,7 @@ A simple yet unique project for my portfolio. The goal is to create a model capa
 
 The method:
 
-To parse avito.ru, create a dataset from the extracted items fit it into a simple linear model.
+Parsing avito.ru, creating a dataset from the extracted items and trianing a simple linear model.
 After a few attempts with different linear models / settings, the residual analysis showed a clear pattern, so the data cannot be separated linearly. 
 Had to abandon the linear model idea and used XGBoost. 
 
