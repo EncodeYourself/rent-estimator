@@ -13,6 +13,7 @@ from os import getcwd
 from scipy import stats
 import seaborn as sns
 import xgboost as xgb
+import statsmodels.api as sm
 #%%
 df = pd.read_csv(getcwd() + '/processed_dataset.csv', index_col=0)
 
@@ -173,16 +174,23 @@ print(round(score, 5))
 #%%
 '''Let's see how wrong my model is...'''
 sq_y_test = y_test.squeeze()
-diff = 10**sq_y_test - 10**y_pred
+diff = 10**y_pred - 10**sq_y_test
 perc_diff = diff / 10**sq_y_test
-fig, (ax1, ax2) = plt.subplots(ncols = 2)
-sns.scatterplot(sq_y_test, sq_y_test - y_pred, ax = ax1, )
-sns.histplot(perc_diff, ax = ax2, kde = True)
-'''Could be much better'''
-first_q, second_q = np.quantile(perc_diff, (.25, .75))
+fig, (ax1, ax2, ax3) = plt.subplots(ncols = 3, figsize=(10, 5))
 
+ax1.set_title('pred vs y (log10)')
+ax1.plot([4, 5.7], [4, 5.7], color = 'black')
+sns.scatterplot(x = sq_y_test, y = y_pred, ax = ax1)
+
+ax2.set_title('residuals (% dist)')
+sns.histplot(perc_diff, ax = ax2)
+
+ax3.set_title('residuals (% QQ)')
+sm.qqplot(perc_diff, line ='45', ax = ax3)
+
+first_q, second_q = np.quantile(perc_diff, (.25, .75))
 #%%
-Object_of_Interest = [[1, 44, 16, 20, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]]
+Object_of_Interest = [[1, 31, 16, 20, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]]
 OoI = pd.DataFrame(Object_of_Interest, columns=x_train.columns)
 
 #%%
@@ -191,5 +199,5 @@ lower_bound = final_result + final_result * first_q
 upper_bound = final_result + final_result * second_q
 print(
       f'''The final goal of this project is to determine a reasonable rent level
-for the object of interest. The most probable answer, considering the model and
-how bad it is, is the range of {lower_bound} - {upper_bound}.''')
+for the object of interest. The most probable answer, considering the model, is
+the range of {lower_bound} - {upper_bound}.''')
