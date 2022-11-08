@@ -1,7 +1,7 @@
 # rent-estimator
 Description:
 
-A simple yet unique project for my portfolio. The goal is to create a model capable of assessing the rent level for apartments in Saint-Petersburg and get a rent range for the Object of Interest. 
+A simple yet unique project for my portfolio. The goal is to create a model capable of assessing the rent level for apartments in Saint-Petersburg and estimate a rent range for the Object of Interest. 
 
 The method:
 
@@ -11,4 +11,4 @@ Had to abandon the linear model idea and used XGBoost.
 
 The result:
 
-The result, to put it frankly, is quite… suboptimal. Was the reason my lack of experience, noisiness of the dataset or oversimplified features? I think all of them. Yet I guess the project is still good enough for you to assess my capabilities.  
+The result, to put it frankly, is quite… suboptimal. The dataset is quite noisy due to the subjectivity of the prices, maybe better features could help. Anyway, it is enough to access my skills. 
