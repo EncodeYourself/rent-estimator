@@ -11,4 +11,4 @@ Had to abandon the linear model idea and used XGBoost.
 
 The result:
 
-The result, to put it frankly, is quite… suboptimal. The dataset is quite noisy due to the subjectivity of the prices, maybe better features could help. Anyway, it is enough to access my skills. 
+The result, to put it frankly, is quite… suboptimal. The dataset is quite noisy due to the subjectivity of the prices, maybe better features could help.
